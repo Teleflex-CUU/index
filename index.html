@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Teleflex SO — Portal de Aplicaciones</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy: #0B2545;
+  --navy2: #0f2f57;
+  --blue: #1A56DB;
+  --blue2: #3B82F6;
+  --blue3: #EFF6FF;
+  --blue4: #DBEAFE;
+  --teal: #0D9488;
+  --teal2: #14B8A6;
+  --green: #059669;
+  --amber: #D97706;
+  --red: #DC2626;
+  --purple: #7C3AED;
+  --surf: #FFFFFF;
+  --surf2: #F8FAFC;
+  --surf3: #F1F5F9;
+  --bor: #E2E8F0;
+  --tx: #0F172A;
+  --tx2: #475569;
+  --tx3: #94A3B8;
+  --shadow: 0 1px 3px rgba(0,0,0,.08), 0 1px 2px rgba(0,0,0,.06);
+  --shadow-md: 0 4px 12px rgba(0,0,0,.08), 0 2px 4px rgba(0,0,0,.05);
+  --shadow-lg: 0 16px 40px rgba(0,0,0,.12), 0 4px 12px rgba(0,0,0,.06);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'DM Sans', system-ui, sans-serif;
+  background: var(--surf2);
+  color: var(--tx);
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── HEADER ── */
+header {
+  background: var(--navy);
+  padding: 0 32px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,.2);
+}
+
+.header-logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo-icon {
+  width: 34px;
+  height: 34px;
+  background: linear-gradient(135deg, var(--blue2), var(--teal2));
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo-icon svg { width: 18px; height: 18px; }
+
+.logo-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.1;
+}
+
+.logo-brand {
+  font-size: 15px;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: -0.2px;
+}
+
+.logo-sub {
+  font-size: 10px;
+  font-weight: 400;
+  color: rgba(255,255,255,.5);
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.badge-env {
+  background: rgba(255,255,255,.08);
+  border: 1px solid rgba(255,255,255,.12);
+  color: rgba(255,255,255,.7);
+  font-size: 11px;
+  font-weight: 500;
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-family: 'DM Mono', monospace;
+  letter-spacing: 0.3px;
+}
+
+/* ── HERO ── */
+.hero {
+  background: linear-gradient(160deg, var(--navy) 0%, var(--navy2) 55%, #112240 100%);
+  padding: 52px 32px 56px;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -80px; right: -80px;
+  width: 400px; height: 400px;
+  background: radial-gradient(circle, rgba(59,130,246,.12) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: -60px; left: 10%;
+  width: 300px; height: 300px;
+  background: radial-gradient(circle, rgba(13,148,136,.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.hero-inner {
+  max-width: 900px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.hero-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(59,130,246,.15);
+  border: 1px solid rgba(59,130,246,.25);
+  color: var(--blue2);
+  font-size: 11px;
+  font-weight: 600;
+  padding: 4px 12px;
+  border-radius: 20px;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+
+.hero-eyebrow::before {
+  content: '';
+  width: 6px; height: 6px;
+  background: var(--blue2);
+  border-radius: 50%;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: .5; transform: scale(.8); }
+}
+
+.hero h1 {
+  font-size: clamp(24px, 4vw, 36px);
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: -0.5px;
+  line-height: 1.2;
+  margin-bottom: 10px;
+}
+
+.hero h1 span {
+  background: linear-gradient(90deg, var(--blue2), var(--teal2));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero p {
+  font-size: 15px;
+  color: rgba(255,255,255,.55);
+  max-width: 460px;
+  line-height: 1.6;
+}
+
+/* ── STATS BAR ── */
+.stats-bar {
+  display: flex;
+  gap: 0;
+  margin-top: 32px;
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: 12px;
+  overflow: hidden;
+  max-width: 520px;
+}
+
+.stat {
+  flex: 1;
+  padding: 14px 20px;
+  border-right: 1px solid rgba(255,255,255,.07);
+}
+
+.stat:last-child { border-right: none; }
+
+.stat-value {
+  font-size: 22px;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+
+.stat-label {
+  font-size: 11px;
+  color: rgba(255,255,255,.4);
+  margin-top: 3px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* ── MAIN CONTENT ── */
+main {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 40px 32px 60px;
+}
+
+.section-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.section-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--tx2);
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+}
+
+.section-line {
+  flex: 1;
+  height: 1px;
+  background: var(--bor);
+}
+
+/* ── APP GRID ── */
+.apps-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 16px;
+}
+
+/* ── APP CARD ── */
+.app-card {
+  background: var(--surf);
+  border: 1px solid var(--bor);
+  border-radius: 14px;
+  overflow: hidden;
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+  transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+  box-shadow: var(--shadow);
+  position: relative;
+}
+
+.app-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-lg);
+  border-color: transparent;
+}
+
+.app-card:hover .card-arrow { opacity: 1; transform: translate(2px, -2px); }
+
+.card-accent {
+  height: 4px;
+  width: 100%;
+}
+
+.card-body {
+  padding: 20px 20px 16px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.card-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.card-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.card-icon svg { width: 22px; height: 22px; }
+
+.card-arrow {
+  width: 20px;
+  height: 20px;
+  color: var(--tx3);
+  opacity: 0;
+  transition: opacity .2s ease, transform .2s ease;
+  flex-shrink: 0;
+}
+
+.card-name {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--tx);
+  letter-spacing: -0.2px;
+  margin-bottom: 5px;
+}
+
+.card-desc {
+  font-size: 13px;
+  color: var(--tx2);
+  line-height: 1.5;
+  flex: 1;
+}
+
+.card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 20px;
+  background: var(--surf3);
+  border-top: 1px solid var(--bor);
+}
+
+.card-tag {
+  font-size: 11px;
+  font-weight: 500;
+  padding: 3px 9px;
+  border-radius: 20px;
+  font-family: 'DM Mono', monospace;
+}
+
+.card-status {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--green);
+}
+
+.status-dot {
+  width: 6px;
+  height: 6px;
+  background: var(--green);
+  border-radius: 50%;
+}
+
+/* ── COLOR VARIANTS ── */
+.c-blue   .card-accent { background: linear-gradient(90deg, #1A56DB, #3B82F6); }
+.c-blue   .card-icon   { background: #EFF6FF; color: #1A56DB; }
+.c-blue   .card-tag    { background: #EFF6FF; color: #1A56DB; }
+
+.c-teal   .card-accent { background: linear-gradient(90deg, #0D9488, #14B8A6); }
+.c-teal   .card-icon   { background: #F0FDFA; color: #0D9488; }
+.c-teal   .card-tag    { background: #F0FDFA; color: #0D9488; }
+
+.c-green  .card-accent { background: linear-gradient(90deg, #059669, #10B981); }
+.c-green  .card-icon   { background: #ECFDF5; color: #059669; }
+.c-green  .card-tag    { background: #ECFDF5; color: #059669; }
+
+.c-amber  .card-accent { background: linear-gradient(90deg, #D97706, #F59E0B); }
+.c-amber  .card-icon   { background: #FFFBEB; color: #D97706; }
+.c-amber  .card-tag    { background: #FFFBEB; color: #D97706; }
+
+.c-purple .card-accent { background: linear-gradient(90deg, #7C3AED, #8B5CF6); }
+.c-purple .card-icon   { background: #F5F3FF; color: #7C3AED; }
+.c-purple .card-tag    { background: #F5F3FF; color: #7C3AED; }
+
+.c-red    .card-accent { background: linear-gradient(90deg, #DC2626, #EF4444); }
+.c-red    .card-icon   { background: #FEF2F2; color: #DC2626; }
+.c-red    .card-tag    { background: #FEF2F2; color: #DC2626; }
+
+/* ── FOOTER ── */
+footer {
+  text-align: center;
+  padding: 24px;
+  font-size: 12px;
+  color: var(--tx3);
+  border-top: 1px solid var(--bor);
+  background: var(--surf);
+}
+
+footer span { color: var(--tx2); font-weight: 500; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 600px) {
+  header { padding: 0 20px; }
+  .hero { padding: 36px 20px 40px; }
+  main { padding: 28px 20px 48px; }
+  .apps-grid { grid-template-columns: 1fr; }
+  .stats-bar { max-width: 100%; }
+}
+
+/* ── ENTRANCE ANIMATION ── */
+.app-card {
+  opacity: 0;
+  animation: fadeUp .4s ease forwards;
+}
+.app-card:nth-child(1) { animation-delay: .05s; }
+.app-card:nth-child(2) { animation-delay: .1s; }
+.app-card:nth-child(3) { animation-delay: .15s; }
+.app-card:nth-child(4) { animation-delay: .2s; }
+.app-card:nth-child(5) { animation-delay: .25s; }
+.app-card:nth-child(6) { animation-delay: .3s; }
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="header-logo">
+    <div class="logo-icon">
+      <svg fill="none" viewBox="0 0 24 24" stroke="white" stroke-width="2">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 10h16M4 14h16M4 18h16"/>
+      </svg>
+    </div>
+    <div class="logo-text">
+      <span class="logo-brand">Teleflex SO</span>
+      <span class="logo-sub">Portal de Aplicaciones</span>
+    </div>
+  </div>
+  <div class="header-right">
+    <span class="badge-env">CUU · 2025</span>
+  </div>
+</header>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-eyebrow">Portal interno</div>
+    <h1>Bienvenido al portal<br><span>Teleflex CUU</span></h1>
+    <p>Acceso centralizado a todas las herramientas digitales del área de salud ocupacional.</p>
+    <div class="stats-bar">
+      <div class="stat">
+        <div class="stat-value">5</div>
+        <div class="stat-label">Aplicaciones</div>
+      </div>
+      <div class="stat">
+        <div class="stat-value">100%</div>
+        <div class="stat-label">En línea</div>
+      </div>
+      <div class="stat">
+        <div class="stat-value">SO</div>
+        <div class="stat-label">Departamento</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MAIN -->
+<main>
+  <div class="section-header">
+    <span class="section-title">Aplicaciones disponibles</span>
+    <div class="section-line"></div>
+  </div>
+
+  <div class="apps-grid">
+
+    <!-- Médico -->
+    <a class="app-card c-blue" href="https://teleflex-cuu.github.io/Doctor/" target="_blank">
+      <div class="card-accent"></div>
+      <div class="card-body">
+        <div class="card-top">
+          <div class="card-icon">
+            <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-3-3v6m-7 4h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+            </svg>
+          </div>
+          <svg class="card-arrow" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M17 7H7M17 7v10"/>
+          </svg>
+        </div>
+        <div class="card-name">SO Médico</div>
+        <div class="card-desc">Webapp central del servicio médico. Gestión de consultas, seguimiento de pacientes y reportes clínicos.</div>
+      </div>
+      <div class="card-footer">
+        <span class="card-tag">Doctor</span>
+        <span class="card-status"><span class="status-dot"></span>Activa</span>
+      </div>
+    </a>
+
+    <!-- Enfermería -->
+    <a class="app-card c-teal" href="https://teleflex-cuu.github.io/Enfermeria/" target="_blank">
+      <div class="card-accent"></div>
+      <div class="card-body">
+        <div class="card-top">
+          <div class="card-icon">
+            <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+            </svg>
+          </div>
+          <svg class="card-arrow" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M17 7H7M17 7v10"/>
+          </svg>
+        </div>
+        <div class="card-name">SO Enfermería</div>
+        <div class="card-desc">Plataforma de gestión para el área de enfermería. Control de turnos, atenciones y registros de salud.</div>
+      </div>
+      <div class="card-footer">
+        <span class="card-tag">Enfermeria</span>
+        <span class="card-status"><span class="status-dot"></span>Activa</span>
+      </div>
+    </a>
+
+    <!-- Nutrición -->
+    <a class="app-card c-green" href="https://teleflex-cuu.github.io/Nutricion/" target="_blank">
+      <div class="card-accent"></div>
+      <div class="card-body">
+        <div class="card-top">
+          <div class="card-icon">
+            <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
+            </svg>
+          </div>
+          <svg class="card-arrow" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M17 7H7M17 7v10"/>
+          </svg>
+        </div>
+        <div class="card-name">Nutrición</div>
+        <div class="card-desc">Valoraciones nutricionales por nutriólogas. Seguimiento de planes alimenticios y evaluaciones periódicas.</div>
+      </div>
+      <div class="card-footer">
+        <span class="card-tag">Nutricion</span>
+        <span class="card-status"><span class="status-dot"></span>Activa</span>
+      </div>
+    </a>
+
+    <!-- NOM-035 Encuestas -->
+    <a class="app-card c-amber" href="https://teleflex-cuu.github.io/NOM-035/" target="_blank">
+      <div class="card-accent"></div>
+      <div class="card-body">
+        <div class="card-top">
+          <div class="card-icon">
+            <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/>
+            </svg>
+          </div>
+          <svg class="card-arrow" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M17 7H7M17 7v10"/>
+          </svg>
+        </div>
+        <div class="card-name">NOM-035 Encuestas</div>
+        <div class="card-desc">Aplicación de encuestas para el cumplimiento de la NOM-035. Captura de respuestas del personal.</div>
+      </div>
+      <div class="card-footer">
+        <span class="card-tag">NOM-035</span>
+        <span class="card-status"><span class="status-dot"></span>Activa</span>
+      </div>
+    </a>
+
+    <!-- NOM-035 Resultados -->
+    <a class="app-card c-purple" href="https://teleflex-cuu.github.io/NOM-035-results/" target="_blank">
+      <div class="card-accent"></div>
+      <div class="card-body">
+        <div class="card-top">
+          <div class="card-icon">
+            <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M11 3.055A9.001 9.001 0 1020.945 13H11V3.055z"/>
+              <path stroke-linecap="round" stroke-linejoin="round" d="M20.488 9H15V3.512A9.025 9.025 0 0120.488 9z"/>
+            </svg>
+          </div>
+          <svg class="card-arrow" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M17 7H7M17 7v10"/>
+          </svg>
+        </div>
+        <div class="card-name">NOM-035 Resultados</div>
+        <div class="card-desc">Dashboard de análisis y visualización de resultados de la NOM-035. Reportes y estadísticas detalladas.</div>
+      </div>
+      <div class="card-footer">
+        <span class="card-tag">NOM-035-results</span>
+        <span class="card-status"><span class="status-dot"></span>Activa</span>
+      </div>
+    </a>
+
+  </div>
+</main>
+
+<footer>
+  <p>Portal interno · <span>Teleflex CUU</span> · Salud Ocupacional — © 2025</p>
+</footer>
+
+</body>
+</html>
