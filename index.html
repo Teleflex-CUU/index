@@ -2,618 +2,614 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Teleflex SO — Portal de Aplicaciones</title>
-
-<link rel="icon" type="image/x-icon" href="favicon.ico">
-<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="192x192" href="icono-192.png">
-<link rel="icon" type="image/png" sizes="512x512" href="icono-512.png">
-<link rel="manifest" href="manifest.json">
-<meta name="theme-color" content="#134a4c">
-
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --tf-blue:      #005B9A;
-    --tf-blue-dark: #004477;
-    --tf-blue-mid:  #0070BB;
-    --tf-blue-light:#E8F4FF;
-    --tf-green:     #00A651;
-    --tf-green-dim: #E6F7EE;
-    --tf-red:       #D32F2F;
-    --tf-orange:    #F57C00;
+:root {
+  --navy: #0B2545;
+  --navy2: #0f2f57;
+  --blue: #1A56DB;
+  --blue2: #3B82F6;
+  --blue3: #EFF6FF;
+  --blue4: #DBEAFE;
+  --teal: #0D9488;
+  --teal2: #14B8A6;
+  --green: #059669;
+  --amber: #D97706;
+  --red: #DC2626;
+  --purple: #7C3AED;
+  --surf: #FFFFFF;
+  --surf2: #F8FAFC;
+  --surf3: #F1F5F9;
+  --bor: #E2E8F0;
+  --tx: #0F172A;
+  --tx2: #475569;
+  --tx3: #94A3B8;
+  --shadow: 0 1px 3px rgba(0,0,0,.08), 0 1px 2px rgba(0,0,0,.06);
+  --shadow-md: 0 4px 12px rgba(0,0,0,.08), 0 2px 4px rgba(0,0,0,.05);
+  --shadow-lg: 0 16px 40px rgba(0,0,0,.12), 0 4px 12px rgba(0,0,0,.06);
+}
 
-    --bg:       #F0F4F8;
-    --surface:  #FFFFFF;
-    --surface2: #F7FAFC;
-    --border:   #DDE3EA;
-    --border2:  #C8D3DE;
+* { box-sizing: border-box; margin: 0; padding: 0; }
 
-    --text:     #1A2332;
-    --text2:    #4A5568;
-    --text3:    #8896A7;
+body {
+  font-family: 'DM Sans', system-ui, sans-serif;
+  background: var(--surf2);
+  color: var(--tx);
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
 
-    --font: 'Inter', sans-serif;
-    --r: 10px;
-    --r-lg: 14px;
-  }
+/* ── HEADER ── */
+header {
+  background: var(--navy);
+  padding: 0 32px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,.2);
+}
 
-  * { margin: 0; padding: 0; box-sizing: border-box; }
+.header-logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
 
-  body {
-    font-family: var(--font);
-    background: var(--bg);
-    color: var(--text);
-    min-height: 100vh;
-  }
+.logo-icon {
+  width: 34px;
+  height: 34px;
+  background: linear-gradient(135deg, var(--blue2), var(--teal2));
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
-  /* ── TOPBAR ── */
-  .topbar {
-    background: var(--tf-blue);
-    color: #fff;
-    padding: 0 32px;
-    height: 60px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    box-shadow: 0 2px 8px rgba(0,91,154,0.25);
-    position: sticky;
-    top: 0;
-    z-index: 100;
-  }
+.logo-icon svg { width: 18px; height: 18px; }
 
-  .topbar-left { display: flex; align-items: center; gap: 14px; }
+.logo-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.1;
+}
 
-  .tf-logo {
-    background: #fff;
-    color: var(--tf-blue);
-    font-weight: 700;
-    font-size: 13px;
-    padding: 5px 10px;
-    border-radius: 6px;
-    letter-spacing: 0.5px;
-  }
+.logo-brand {
+  font-size: 15px;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: -0.2px;
+}
 
-  .topbar-title { font-size: 16px; font-weight: 600; letter-spacing: 0.2px; }
-  .topbar-sub   { font-size: 12px; opacity: 0.75; margin-top: 1px; }
+.logo-sub {
+  font-size: 10px;
+  font-weight: 400;
+  color: rgba(255,255,255,.5);
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+}
 
-  .topbar-right { display: flex; align-items: center; gap: 16px; }
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
 
-  .status-pill {
-    display: flex; align-items: center; gap: 6px;
-    background: rgba(255,255,255,0.12);
-    border: 1px solid rgba(255,255,255,0.2);
-    padding: 5px 12px;
-    border-radius: 20px;
-    font-size: 12px;
-  }
+.badge-env {
+  background: rgba(255,255,255,.08);
+  border: 1px solid rgba(255,255,255,.12);
+  color: rgba(255,255,255,.7);
+  font-size: 11px;
+  font-weight: 500;
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-family: 'DM Mono', monospace;
+  letter-spacing: 0.3px;
+}
 
-  .status-dot {
-    width: 7px; height: 7px;
-    border-radius: 50%;
-    background: var(--tf-green);
-    box-shadow: 0 0 6px rgba(0,166,81,0.8);
-  }
+/* ── HERO ── */
+.hero {
+  background: linear-gradient(160deg, var(--navy) 0%, var(--navy2) 55%, #112240 100%);
+  padding: 52px 32px 56px;
+  position: relative;
+  overflow: hidden;
+}
 
-  .topbar-date { font-size: 12px; opacity: 0.7; }
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -80px; right: -80px;
+  width: 400px; height: 400px;
+  background: radial-gradient(circle, rgba(59,130,246,.12) 0%, transparent 70%);
+  pointer-events: none;
+}
 
-  /* ── HERO BAND ── */
-  .hero {
-    background: linear-gradient(135deg, var(--tf-blue-dark) 0%, var(--tf-blue-mid) 100%);
-    color: #fff;
-    padding: 36px 32px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 24px;
-  }
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: -60px; left: 10%;
+  width: 300px; height: 300px;
+  background: radial-gradient(circle, rgba(13,148,136,.08) 0%, transparent 70%);
+  pointer-events: none;
+}
 
-  .hero-text h1 {
-    font-size: 26px;
-    font-weight: 700;
-    letter-spacing: -0.3px;
-    margin-bottom: 6px;
-  }
+.hero-inner {
+  max-width: 900px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
 
-  .hero-text p {
-    font-size: 14px;
-    opacity: 0.8;
-    max-width: 480px;
-    line-height: 1.6;
-  }
+.hero-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(59,130,246,.15);
+  border: 1px solid rgba(59,130,246,.25);
+  color: var(--blue2);
+  font-size: 11px;
+  font-weight: 600;
+  padding: 4px 12px;
+  border-radius: 20px;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
 
-  .hero-stats { display: flex; gap: 20px; flex-shrink: 0; }
+.hero-eyebrow::before {
+  content: '';
+  width: 6px; height: 6px;
+  background: var(--blue2);
+  border-radius: 50%;
+  animation: pulse 2s infinite;
+}
 
-  .hero-stat {
-    background: rgba(255,255,255,0.12);
-    border: 1px solid rgba(255,255,255,0.18);
-    border-radius: var(--r);
-    padding: 14px 20px;
-    text-align: center;
-    min-width: 90px;
-  }
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: .5; transform: scale(.8); }
+}
 
-  .hero-stat-val {
-    font-size: 28px;
-    font-weight: 700;
-    line-height: 1;
-  }
+.hero h1 {
+  font-size: clamp(24px, 4vw, 36px);
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: -0.5px;
+  line-height: 1.2;
+  margin-bottom: 10px;
+}
 
-  .hero-stat-lbl {
-    font-size: 11px;
-    opacity: 0.75;
-    margin-top: 4px;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-  }
+.hero h1 span {
+  background: linear-gradient(90deg, var(--blue2), var(--teal2));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
 
-  /* ── MAIN ── */
-  main { padding: 28px 32px; max-width: 1200px; margin: 0 auto; }
+.hero p {
+  font-size: 15px;
+  color: rgba(255,255,255,.55);
+  max-width: 460px;
+  line-height: 1.6;
+}
 
-  .section-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 18px;
-  }
+/* ── STATS BAR ── */
+.stats-bar {
+  display: flex;
+  gap: 0;
+  margin-top: 32px;
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: 12px;
+  overflow: hidden;
+  max-width: 520px;
+}
 
-  .section-title {
-    font-size: 14px;
-    font-weight: 600;
-    color: var(--text2);
-    text-transform: uppercase;
-    letter-spacing: 0.8px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
+.stat {
+  flex: 1;
+  padding: 14px 20px;
+  border-right: 1px solid rgba(255,255,255,.07);
+}
 
-  .section-title::before {
-    content: '';
-    display: block;
-    width: 3px; height: 16px;
-    background: var(--tf-blue);
-    border-radius: 2px;
-  }
+.stat:last-child { border-right: none; }
 
-  /* ── APP GRID ── */
-  .apps-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 18px;
-    margin-bottom: 32px;
-  }
+.stat-value {
+  font-size: 22px;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
 
-  .app-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--r-lg);
-    overflow: hidden;
-    text-decoration: none;
-    color: inherit;
-    display: flex;
-    flex-direction: column;
-    transition: all 0.2s;
-    box-shadow: 0 1px 4px rgba(0,0,0,0.06);
-  }
+.stat-label {
+  font-size: 11px;
+  color: rgba(255,255,255,.4);
+  margin-top: 3px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
 
-  .app-card:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 8px 24px rgba(0,91,154,0.12);
-    border-color: var(--tf-blue);
-  }
+/* ── MAIN CONTENT ── */
+main {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 40px 32px 60px;
+}
 
-  .app-card-header {
-    padding: 20px 20px 16px;
-    display: flex;
-    align-items: flex-start;
-    gap: 14px;
-    border-bottom: 1px solid var(--border);
-  }
+.section-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
 
-  .app-icon {
-    width: 48px; height: 48px;
-    border-radius: 12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 22px;
-    flex-shrink: 0;
-  }
+.section-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--tx2);
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+}
 
-  .app-icon-blue   { background: var(--tf-blue-light); }
-  .app-icon-green  { background: var(--tf-green-dim); }
-  .app-icon-orange { background: #FFF3E0; }
-  .app-icon-purple { background: #F3E5F5; }
-  .app-icon-teal   { background: #E0F7FA; }
-  .app-icon-red    { background: #FFEBEE; }
+.section-line {
+  flex: 1;
+  height: 1px;
+  background: var(--bor);
+}
 
-  .app-info { flex: 1; }
+/* ── APP GRID ── */
+.apps-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 16px;
+}
 
-  .app-name {
-    font-size: 16px;
-    font-weight: 700;
-    margin-bottom: 3px;
-    color: var(--text);
-  }
+/* ── APP CARD ── */
+.app-card {
+  background: var(--surf);
+  border: 1px solid var(--bor);
+  border-radius: 14px;
+  overflow: hidden;
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+  transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+  box-shadow: var(--shadow);
+  position: relative;
+}
 
-  .app-code {
-    font-size: 11px;
-    color: var(--tf-blue);
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    background: var(--tf-blue-light);
-    padding: 2px 7px;
-    border-radius: 4px;
-    display: inline-block;
-  }
+.app-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-lg);
+  border-color: transparent;
+}
 
-  .app-badge {
-    display: flex;
-    align-items: center;
-    gap: 4px;
-    font-size: 11px;
-    font-weight: 600;
-    padding: 3px 9px;
-    border-radius: 20px;
-    flex-shrink: 0;
-  }
+.app-card:hover .card-arrow { opacity: 1; transform: translate(2px, -2px); }
 
-  .badge-active   { background: var(--tf-green-dim); color: var(--tf-green); }
-  .badge-inactive { background: #FFF3E0; color: var(--tf-orange); }
+.card-accent {
+  height: 4px;
+  width: 100%;
+}
 
-  .badge-dot { width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+.card-body {
+  padding: 20px 20px 16px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
 
-  .app-body { padding: 16px 20px 20px; flex: 1; }
+.card-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
 
-  .app-desc {
-    font-size: 13px;
-    color: var(--text2);
-    line-height: 1.6;
-    margin-bottom: 14px;
-  }
+.card-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
 
-  .app-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+.card-icon svg { width: 22px; height: 22px; }
 
-  .app-tag {
-    font-size: 11px;
-    color: var(--text3);
-    background: var(--surface2);
-    border: 1px solid var(--border);
-    padding: 2px 8px;
-    border-radius: 4px;
-  }
+.card-arrow {
+  width: 20px;
+  height: 20px;
+  color: var(--tx3);
+  opacity: 0;
+  transition: opacity .2s ease, transform .2s ease;
+  flex-shrink: 0;
+}
 
-  .app-footer {
-    padding: 12px 20px;
-    background: var(--surface2);
-    border-top: 1px solid var(--border);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    font-size: 12px;
-    color: var(--text3);
-  }
+.card-name {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--tx);
+  letter-spacing: -0.2px;
+  margin-bottom: 5px;
+}
 
-  .app-cta {
-    font-size: 12px;
-    font-weight: 600;
-    color: var(--tf-blue);
-    display: flex;
-    align-items: center;
-    gap: 4px;
-  }
+.card-desc {
+  font-size: 13px;
+  color: var(--tx2);
+  line-height: 1.5;
+  flex: 1;
+}
 
-  /* ── INFO CARDS ── */
-  .info-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; margin-bottom: 28px; }
+.card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 20px;
+  background: var(--surf3);
+  border-top: 1px solid var(--bor);
+}
 
-  .info-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--r);
-    padding: 18px 20px;
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-  }
+.card-tag {
+  font-size: 11px;
+  font-weight: 500;
+  padding: 3px 9px;
+  border-radius: 20px;
+  font-family: 'DM Mono', monospace;
+}
 
-  .info-card-icon {
-    width: 40px; height: 40px;
-    border-radius: 10px;
-    background: var(--tf-blue-light);
-    color: var(--tf-blue);
-    display: flex; align-items: center; justify-content: center;
-    font-size: 18px;
-    flex-shrink: 0;
-  }
+.card-status {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--green);
+}
 
-  .info-card-val { font-size: 24px; font-weight: 700; color: var(--tf-blue); }
-  .info-card-lbl { font-size: 12px; color: var(--text3); margin-top: 1px; }
+.status-dot {
+  width: 6px;
+  height: 6px;
+  background: var(--green);
+  border-radius: 50%;
+}
 
-  /* ── FOOTER ── */
-  footer {
-    background: var(--surface);
-    border-top: 1px solid var(--border);
-    padding: 18px 32px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    font-size: 12px;
-    color: var(--text3);
-  }
+/* ── COLOR VARIANTS ── */
+.c-blue   .card-accent { background: linear-gradient(90deg, #1A56DB, #3B82F6); }
+.c-blue   .card-icon   { background: #EFF6FF; color: #1A56DB; }
+.c-blue   .card-tag    { background: #EFF6FF; color: #1A56DB; }
 
-  .footer-logo { display: flex; align-items: center; gap: 8px; font-weight: 600; color: var(--text2); }
+.c-teal   .card-accent { background: linear-gradient(90deg, #0D9488, #14B8A6); }
+.c-teal   .card-icon   { background: #F0FDFA; color: #0D9488; }
+.c-teal   .card-tag    { background: #F0FDFA; color: #0D9488; }
 
-  /* ── NORM BANNER ── */
-  .norm-banner {
-    background: linear-gradient(90deg, var(--tf-blue-light), #fff);
-    border: 1px solid #C5DCF0;
-    border-left: 4px solid var(--tf-blue);
-    border-radius: var(--r);
-    padding: 14px 18px;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    margin-bottom: 28px;
-    font-size: 13px;
-    color: var(--text2);
-  }
+.c-green  .card-accent { background: linear-gradient(90deg, #059669, #10B981); }
+.c-green  .card-icon   { background: #ECFDF5; color: #059669; }
+.c-green  .card-tag    { background: #ECFDF5; color: #059669; }
 
-  .norm-banner strong { color: var(--tf-blue); }
+.c-amber  .card-accent { background: linear-gradient(90deg, #D97706, #F59E0B); }
+.c-amber  .card-icon   { background: #FFFBEB; color: #D97706; }
+.c-amber  .card-tag    { background: #FFFBEB; color: #D97706; }
 
-  /* Responsive */
-  @media (max-width: 768px) {
-    .hero { flex-direction: column; }
-    .hero-stats { width: 100%; justify-content: space-between; }
-    .info-grid { grid-template-columns: 1fr; }
-    main { padding: 20px 16px; }
-    .topbar { padding: 0 16px; }
-  }
+.c-purple .card-accent { background: linear-gradient(90deg, #7C3AED, #8B5CF6); }
+.c-purple .card-icon   { background: #F5F3FF; color: #7C3AED; }
+.c-purple .card-tag    { background: #F5F3FF; color: #7C3AED; }
+
+.c-red    .card-accent { background: linear-gradient(90deg, #DC2626, #EF4444); }
+.c-red    .card-icon   { background: #FEF2F2; color: #DC2626; }
+.c-red    .card-tag    { background: #FEF2F2; color: #DC2626; }
+
+/* ── FOOTER ── */
+footer {
+  text-align: center;
+  padding: 24px;
+  font-size: 12px;
+  color: var(--tx3);
+  border-top: 1px solid var(--bor);
+  background: var(--surf);
+}
+
+footer span { color: var(--tx2); font-weight: 500; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 600px) {
+  header { padding: 0 20px; }
+  .hero { padding: 36px 20px 40px; }
+  main { padding: 28px 20px 48px; }
+  .apps-grid { grid-template-columns: 1fr; }
+  .stats-bar { max-width: 100%; }
+}
+
+/* ── ENTRANCE ANIMATION ── */
+.app-card {
+  opacity: 0;
+  animation: fadeUp .4s ease forwards;
+}
+.app-card:nth-child(1) { animation-delay: .05s; }
+.app-card:nth-child(2) { animation-delay: .1s; }
+.app-card:nth-child(3) { animation-delay: .15s; }
+.app-card:nth-child(4) { animation-delay: .2s; }
+.app-card:nth-child(5) { animation-delay: .25s; }
+.app-card:nth-child(6) { animation-delay: .3s; }
+.app-card:nth-child(7) { animation-delay: .35s; }
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
 </style>
 </head>
 <body>
 
-<header class="topbar">
-  <div class="topbar-left">
-    <div class="tf-logo">TELEFLEX</div>
-    <div>
-      <div class="topbar-title">Portal Salud Ocupacional</div>
-      <div class="topbar-sub">Chihuahua, Chihuahua · 2025</div>
+<!-- HEADER -->
+<header>
+  <div class="header-logo">
+    <div class="logo-icon">
+      <svg fill="none" viewBox="0 0 24 24" stroke="white" stroke-width="2">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 10h16M4 14h16M4 18h16"/>
+      </svg>
+    </div>
+    <div class="logo-text">
+      <span class="logo-brand">Teleflex SO</span>
+      <span class="logo-sub">Portal de Aplicaciones</span>
     </div>
   </div>
-  <div class="topbar-right">
-    <div class="status-pill">
-      <div class="status-dot"></div>
-      <span>Todos los sistemas activos</span>
-    </div>
-    <div class="topbar-date" id="fechaHoy"></div>
+  <div class="header-right">
+    <span class="badge-env">CUU · 2025</span>
   </div>
 </header>
 
+<!-- HERO -->
 <div class="hero">
-  <div class="hero-text">
-    <h1>Bienvenido al portal Teleflex CUU</h1>
-    <p>Acceso centralizado a todas las herramientas digitales del área de Salud Ocupacional. Gestión médica, nutricional, ergonómica y de cumplimiento normativo.</p>
-  </div>
-  <div class="hero-stats">
-    <div class="hero-stat">
-      <div class="hero-stat-val">7</div>
-      <div class="hero-stat-lbl">Apps</div>
-    </div>
-    <div class="hero-stat">
-      <div class="hero-stat-val">4</div>
-      <div class="hero-stat-lbl">Plantas</div>
-    </div>
-    <div class="hero-stat">
-      <div class="hero-stat-val">100%</div>
-      <div class="hero-stat-lbl">En línea</div>
+  <div class="hero-inner">
+    <div class="hero-eyebrow">Portal interno</div>
+    <h1>Bienvenido al portal<br><span>Teleflex CUU</span></h1>
+    <p>Acceso centralizado a todas las herramientas digitales del área de salud ocupacional.</p>
+    <div class="stats-bar">
+      <div class="stat">
+        <div class="stat-value">5</div>
+        <div class="stat-label">Aplicaciones</div>
+      </div>
+      <div class="stat">
+        <div class="stat-value">100%</div>
+        <div class="stat-label">En línea</div>
+      </div>
+      <div class="stat">
+        <div class="stat-value">SO</div>
+        <div class="stat-label">Departamento</div>
+      </div>
     </div>
   </div>
 </div>
 
+<!-- MAIN -->
 <main>
-
-  <div class="norm-banner">
-    <span style="font-size:20px;">📋</span>
-    <div>
-      <strong>Cumplimiento normativo activo</strong> — NOM-030-STPS · NOM-035-STPS · NOM-036-STPS-2018 &nbsp;·&nbsp;
-      Plantas: Américas · Barrancas · Cantera · Juventud
-    </div>
-  </div>
-
-  <div class="info-grid">
-    <div class="info-card">
-      <div class="info-card-icon">🏭</div>
-      <div>
-        <div class="info-card-val">4</div>
-        <div class="info-card-lbl">Plantas activas</div>
-      </div>
-    </div>
-    <div class="info-card">
-      <div class="info-card-icon">👩‍⚕️</div>
-      <div>
-        <div class="info-card-val">SO</div>
-        <div class="info-card-lbl">Departamento Salud Ocupacional</div>
-      </div>
-    </div>
-    <div class="info-card">
-      <div class="info-card-icon" style="background:var(--tf-green-dim);color:var(--tf-green);">✓</div>
-      <div>
-        <div class="info-card-val" style="color:var(--tf-green);">7/7</div>
-        <div class="info-card-lbl">Aplicaciones en línea</div>
-      </div>
-    </div>
-  </div>
-
   <div class="section-header">
-    <div class="section-title">Aplicaciones disponibles</div>
+    <span class="section-title">Aplicaciones disponibles</span>
+    <div class="section-line"></div>
   </div>
 
   <div class="apps-grid">
 
-    <a class="app-card" href="https://teleflex-cuu.github.io/Doctor/">
-      <div class="app-card-header">
-        <div class="app-icon app-icon-blue">🩺</div>
-        <div class="app-info">
-          <div class="app-name">SO Médico</div>
-          <div class="app-code">Doctor</div>
+    <!-- Servicio Médico -->
+    <a class="app-card c-blue" href="https://teleflex-cuu.github.io/Servicio-medico" target="_blank">
+      <div class="card-accent"></div>
+      <div class="card-body">
+        <div class="card-top">
+          <div class="card-icon">
+            <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z"/>
+            </svg>
+          </div>
+          <svg class="card-arrow" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M17 7H7M17 7v10"/>
+          </svg>
         </div>
-        <div class="app-badge badge-active"><div class="badge-dot"></div> Activa</div>
+        <div class="card-name">AUNA Salud Ocupacional</div>
+        <div class="card-desc">Plataforma integral de salud ocupacional. Gestión de consultas médicas, enfermería y seguimiento del personal.</div>
       </div>
-      <div class="app-body">
-        <div class="app-desc">Webapp central del servicio médico. Gestión de consultas, seguimiento de pacientes, incapacidades y reportes clínicos NOM-030.</div>
-        <div class="app-tags">
-          <span class="app-tag">Valoraciones</span>
-          <span class="app-tag">Incapacidades</span>
-          <span class="app-tag">Dashboard</span>
-          <span class="app-tag">NOM-030</span>
-        </div>
-      </div>
-      <div class="app-footer">
-        <span>Módulo principal SO</span>
-        <span class="app-cta">Abrir →</span>
+      <div class="card-footer">
+        <span class="card-tag">Servicio-medico</span>
+        <span class="card-status"><span class="status-dot"></span>Activa</span>
       </div>
     </a>
 
-    <a class="app-card" href="https://teleflex-cuu.github.io/Teleflex-enfermeria/">
-      <div class="app-card-header">
-        <div class="app-icon app-icon-teal">🏥</div>
-        <div class="app-info">
-          <div class="app-name">SO Enfermería</div>
-          <div class="app-code">Enfermeria</div>
+    <!-- Nutrición -->
+    <a class="app-card c-green" href="https://teleflex-cuu.github.io/Nutricion/" target="_blank">
+      <div class="card-accent"></div>
+      <div class="card-body">
+        <div class="card-top">
+          <div class="card-icon">
+            <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
+            </svg>
+          </div>
+          <svg class="card-arrow" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M17 7H7M17 7v10"/>
+          </svg>
         </div>
-        <div class="app-badge badge-active"><div class="badge-dot"></div> Activa</div>
+        <div class="card-name">Nutrición</div>
+        <div class="card-desc">Valoraciones nutricionales por nutriólogas. Seguimiento de planes alimenticios y evaluaciones periódicas.</div>
       </div>
-      <div class="app-body">
-        <div class="app-desc">Plataforma de gestión para el área de enfermería. Control de turnos, atenciones y registros de salud de los trabajadores.</div>
-        <div class="app-tags">
-          <span class="app-tag">Atenciones</span>
-          <span class="app-tag">Turnos</span>
-          <span class="app-tag">Registros</span>
-        </div>
-      </div>
-      <div class="app-footer">
-        <span>Todas las plantas</span>
-        <span class="app-cta">Abrir →</span>
+      <div class="card-footer">
+        <span class="card-tag">Nutricion</span>
+        <span class="card-status"><span class="status-dot"></span>Activa</span>
       </div>
     </a>
 
-    <a class="app-card" href="https://teleflex-cuu.github.io/Nutricion/">
-      <div class="app-card-header">
-        <div class="app-icon app-icon-green">🥗</div>
-        <div class="app-info">
-          <div class="app-name">Nutrición</div>
-          <div class="app-code">Nutricion</div>
+    <!-- NOM-035 Encuestas -->
+    <a class="app-card c-amber" href="https://teleflex-cuu.github.io/NOM-035/" target="_blank">
+      <div class="card-accent"></div>
+      <div class="card-body">
+        <div class="card-top">
+          <div class="card-icon">
+            <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/>
+            </svg>
+          </div>
+          <svg class="card-arrow" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M17 7H7M17 7v10"/>
+          </svg>
         </div>
-        <div class="app-badge badge-active"><div class="badge-dot"></div> Activa</div>
+        <div class="card-name">NOM-035 Encuestas</div>
+        <div class="card-desc">Aplicación de encuestas para el cumplimiento de la NOM-035. Captura de respuestas del personal.</div>
       </div>
-      <div class="app-body">
-        <div class="app-desc">Valoraciones nutricionales por nutriólogas. Seguimiento de planes alimenticios, cálculo de IMC y evaluaciones periódicas de los trabajadores.</div>
-        <div class="app-tags">
-          <span class="app-tag">IMC</span>
-          <span class="app-tag">Planes alimenticios</span>
-          <span class="app-tag">Seguimiento</span>
-        </div>
-      </div>
-      <div class="app-footer">
-        <span>Karen Stirk · Jacqueline Mejia</span>
-        <span class="app-cta">Abrir →</span>
+      <div class="card-footer">
+        <span class="card-tag">NOM-035</span>
+        <span class="card-status"><span class="status-dot"></span>Activa</span>
       </div>
     </a>
 
-    <a class="app-card" href="https://teleflex-cuu.github.io/NOM-035/">
-      <div class="app-card-header">
-        <div class="app-icon app-icon-purple">📝</div>
-        <div class="app-info">
-          <div class="app-name">NOM-035 Encuestas</div>
-          <div class="app-code">NOM-035</div>
+    <!-- NOM-035 Resultados -->
+    <a class="app-card c-purple" href="https://teleflex-cuu.github.io/NOM-035-results/" target="_blank">
+      <div class="card-accent"></div>
+      <div class="card-body">
+        <div class="card-top">
+          <div class="card-icon">
+            <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M11 3.055A9.001 9.001 0 1020.945 13H11V3.055z"/>
+              <path stroke-linecap="round" stroke-linejoin="round" d="M20.488 9H15V3.512A9.025 9.025 0 0120.488 9z"/>
+            </svg>
+          </div>
+          <svg class="card-arrow" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M17 7H7M17 7v10"/>
+          </svg>
         </div>
-        <div class="app-badge badge-active"><div class="badge-dot"></div> Activa</div>
+        <div class="card-name">NOM-035 Resultados</div>
+        <div class="card-desc">Dashboard de análisis y visualización de resultados de la NOM-035. Reportes y estadísticas detalladas.</div>
       </div>
-      <div class="app-body">
-        <div class="app-desc">Aplicación de encuestas para el cumplimiento de la NOM-035-STPS-2018. Captura de respuestas de los trabajadores sobre factores de riesgo psicosocial.</div>
-        <div class="app-tags">
-          <span class="app-tag">Psicosocial</span>
-          <span class="app-tag">Encuestas</span>
-          <span class="app-tag">NOM-035</span>
-        </div>
-      </div>
-      <div class="app-footer">
-        <span>Captura de cuestionarios</span>
-        <span class="app-cta">Abrir →</span>
+      <div class="card-footer">
+        <span class="card-tag">NOM-035-results</span>
+        <span class="card-status"><span class="status-dot"></span>Activa</span>
       </div>
     </a>
 
-    <a class="app-card" href="https://teleflex-cuu.github.io/NOM-035-results/">
-      <div class="app-card-header">
-        <div class="app-icon app-icon-orange">📊</div>
-        <div class="app-info">
-          <div class="app-name">NOM-035 Resultados</div>
-          <div class="app-code">NOM-035-results</div>
+    <!-- Ergonomía -->
+    <a class="app-card c-red" href="https://teleflex-cuu.github.io/Ergonom/" target="_blank">
+      <div class="card-accent"></div>
+      <div class="card-body">
+        <div class="card-top">
+          <div class="card-icon">
+            <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
+            </svg>
+          </div>
+          <svg class="card-arrow" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M17 7H7M17 7v10"/>
+          </svg>
         </div>
-        <div class="app-badge badge-active"><div class="badge-dot"></div> Activa</div>
+        <div class="card-name">Ergonomía</div>
+        <div class="card-desc">Evaluaciones y seguimiento ergonómico del personal. Identificación de riesgos y recomendaciones posturales.</div>
       </div>
-      <div class="app-body">
-        <div class="app-desc">Dashboard de análisis y visualización de resultados de la NOM-035. Reportes estadísticos, gráficas y exportación de datos por área y planta.</div>
-        <div class="app-tags">
-          <span class="app-tag">Dashboard</span>
-          <span class="app-tag">Reportes</span>
-          <span class="app-tag">Estadísticas</span>
-        </div>
-      </div>
-      <div class="app-footer">
-        <span>Análisis y reportes</span>
-        <span class="app-cta">Abrir →</span>
-      </div>
-    </a>
-
-    <a class="app-card" href="https://teleflex-cuu.github.io/Ergonom/">
-      <div class="app-card-header">
-        <div class="app-icon app-icon-red">🦴</div>
-        <div class="app-info">
-          <div class="app-name">Ergonomía</div>
-          <div class="app-code">Ergonom</div>
-        </div>
-        <div class="app-badge badge-active"><div class="badge-dot"></div> Activa</div>
-      </div>
-      <div class="app-body">
-        <div class="app-desc">Evaluaciones ergonómicas NOM-036-STPS-2018. Análisis REBA, RULA, NIOSH y más. Anotación manual de articulaciones en video.</div>
-        <div class="app-tags">
-          <span class="app-tag">REBA</span>
-          <span class="app-tag">RULA</span>
-          <span class="app-tag">NOM-036</span>
-          <span class="app-tag">Video</span>
-        </div>
-      </div>
-      <div class="app-footer">
-        <span>Análisis postural</span>
-        <span class="app-cta">Abrir →</span>
-      </div>
-    </a>
-
-    <a class="app-card" href="https://teleflex-cuu.github.io/Proverifica2/">
-      <div class="app-card-header">
-        <div class="app-icon app-icon-blue">🔍</div>
-        <div class="app-info">
-          <div class="app-name">Proverifica</div>
-          <div class="app-code">Proverifica2</div>
-        </div>
-        <div class="app-badge badge-active"><div class="badge-dot"></div> Activa</div>
-      </div>
-      <div class="app-body">
-        <div class="app-desc">Sistema de verificación y auditoría de procesos de Salud Ocupacional. Control de cumplimiento, checklist e inspecciones de seguridad en planta.</div>
-        <div class="app-tags">
-          <span class="app-tag">Verificación</span>
-          <span class="app-tag">Auditorías</span>
-          <span class="app-tag">Checklist</span>
-        </div>
-      </div>
-      <div class="app-footer">
-        <span>Control y seguimiento</span>
-        <span class="app-cta">Abrir →</span>
+      <div class="card-footer">
+        <span class="card-tag">Ergonom</span>
+        <span class="card-status"><span class="status-dot"></span>Activa</span>
       </div>
     </a>
 
@@ -621,18 +617,8 @@
 </main>
 
 <footer>
-  <div class="footer-logo">
-    <div class="tf-logo" style="font-size:11px;padding:3px 8px;">TELEFLEX</div>
-    Portal interno · Salud Ocupacional CUU
-  </div>
-  <div>© 2025 Teleflex · Chihuahua, Chihuahua</div>
+  <p>Portal interno · <span>Teleflex CUU</span> · Salud Ocupacional — © 2025</p>
 </footer>
-
-<script>
-  // Fecha actual
-  const fecha = new Date().toLocaleDateString('es-MX', { weekday:'long', year:'numeric', month:'long', day:'numeric' });
-  document.getElementById('fechaHoy').textContent = fecha.charAt(0).toUpperCase() + fecha.slice(1);
-</script>
 
 </body>
 </html>
